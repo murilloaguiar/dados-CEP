@@ -19,7 +19,7 @@
             <div class="container">
                 <a class="navbar-brand" href="index.html"><i class="fas fa-map-marker-alt"></i> CEP</a>
                 <div class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Informe o CEP" id="search" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="CEP somente números" id="search" aria-label="Search">
                     <button class="btn btn-outline-success" id="submit">Search</button>
                 </div>
             </div>
@@ -46,21 +46,41 @@
                     <h3>Estado:</h3> <p id="state"> </p>
                 </div>
 
-                <div class="col-4">
+                <div class="col-6">
                     <h3>DDD:</h3> <p id="ddd"></p>
+                </div>
+
+                <div class="col-6">
+                    <h3>Microrregião:</h3> <p id="microrregiao"></p>
                 </div>
                 
             </div>
 
             <div class="row">
                 <div class="col-12">
-                    <h3>População estimada</h3> <p id="population"></p>
+                    <h3>População estimada da cidade</h3> <p id="population"></p>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12" id="pib">
+                    <h3>Produto interno bruto municipal (mil reais)</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12" id="agricultura">
+                    <h3>Dados agrícolas da microrregiao</h3>
+                    <h5>Área destinada à colheita (hectares)</h5>
+                </div>
+            </div>
+
         </section>
     </main>
 
-
+    <footer class="container mt-5">
+        Ainda em construção
+    </footer>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
