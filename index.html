@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="assets/css/style.css">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -14,76 +16,64 @@
     <title>Dados CEPs</title>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="index.html"><i class="fas fa-map-marker-alt"></i> CEP</a>
-                <div class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="CEP somente números" id="search" aria-label="Search">
-                    <button class="btn btn-outline-success" id="submit">Search</button>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main class="container">
-        <section>
-            <div class="row">
-
-                <div class="col-6">
-                    <h3>Rua:</h3> <p id="street"></p>
-                </div>
-
-                <div class="col-6">
-                    <h3>Bairro:</h3> <p id="district"></p>
-                </div>
-
-                <div class="col-6">
-                    <h3>Cidade:</h3> <p id="city"></p>
-                </div>
-
-                <div class="col-6">
-                    <h3>Estado:</h3> <p id="state"> </p>
-                </div>
-
-                <div class="col-6">
-                    <h3>DDD:</h3> <p id="ddd"></p>
-                </div>
-
-                <div class="col-6">
-                    <h3>Microrregião:</h3> <p id="microrregiao"></p>
-                </div>
-                
+   <header class="d-flex align-items-center justify-content-center">
+      <div class="container">
+         
+         <div class="row">
+            <div class="col-9">
+               <div class="form-floating">
+                  <input class="form-control me-2" type="search" placeholder="CEP" id="search" aria-label="Search">
+                  <label for="search">Digite um CEP</label>
+               </div>
+               
             </div>
 
-            <div class="row">
-                <div class="col-12">
-                    <h3>População estimada da cidade</h3> <p id="population"></p>
-                </div>
+            <div class="col-3">
+               <button class="btn btn-outline-warning btn-lg" id="submit">Pesquisar</button>
             </div>
+            
+         </div>
+      </div>   
+   
 
-            <div class="row">
-                <div class="col-12" id="pib">
-                    <h3>Produto interno bruto municipal (mil reais)</h3>
-                </div>
+   </header>
+
+   <main class="container mt-4 d-none" id="main">
+      <section>
+         <div class="row" id="cep-data">
+
+            
+               
+         </div>
+
+         
+
+         <div class="row">
+            <div class="col-12">
+               <h3>População estimada da cidade</h3> <p id="population"></p>
             </div>
+         </div>
 
-            <div class="row">
-                <div class="col-12" id="agricultura">
-                    <h3>Dados agrícolas da microrregiao</h3>
-                    <h5>Área destinada à colheita (hectares)</h5>
-                </div>
-            </div>
+         <div class="row">
+               <div class="col-12" id="pib">
+                  <h3>Produto interno bruto municipal (mil reais)</h3>
+               </div>
+         </div>
 
-        </section>
-    </main>
+         <div class="row">
+               <div class="col-12" id="agricultura">
+                  <h3>Dados agrícolas da microrregiao</h3>
+                  <h5>Área destinada à colheita (hectares)</h5>
+               </div>
+         </div>
 
-    <footer class="container mt-5">
-        Ainda em construção
-    </footer>
+         
+
+      </section>
+   </main>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
