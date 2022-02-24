@@ -10,3 +10,7 @@ header{
 #cep-data .col-md-6:nth-child(n+2){
    margin-top: 15px;
 }
+
+.form-floating input:focus{
+   box-shadow: 0px 0px 8px 2px #ffc107;
+}

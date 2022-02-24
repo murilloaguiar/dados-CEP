@@ -8,7 +8,7 @@ const removeChilds = (list)=>{
 }
 
 const insertDataCEP = data =>{
-   const cep_data = ['localidade', 'logradouro', 'bairro', 'uf', 'ddd']
+   const cep_data = ['localidade', 'logradouro', 'bairro', 'uf', 'ddd', 'complemento']
 
    if(principal.children.length>0) removeChilds(principal)
    
@@ -18,10 +18,10 @@ const insertDataCEP = data =>{
          div_card_principal.className = "col-sm-12 col-md-6"
 
          const div_card = document.createElement('div')
-         div_card.className = "card"
+         div_card.className = "card text-warning bg-dark mb-3"
 
          const div_card_header = document.createElement('div')
-         div_card_header.className = "card-header"
+         div_card_header.className = "card-header fw-bold"
          div_card_header.innerHTML = key.toUpperCase() 
 
          div_card.appendChild(div_card_header)
@@ -31,7 +31,7 @@ const insertDataCEP = data =>{
 
          const p_card_body = document.createElement('p')
          p_card_body.className = "card-text"
-         p_card_body.innerHTML = data[key] || 'Não recuperado'
+         p_card_body.innerHTML = data[key] || 'Indisponível'
 
          div_card_body.appendChild(p_card_body)
 
