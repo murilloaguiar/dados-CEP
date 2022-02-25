@@ -80,7 +80,7 @@ const insertPIB = data =>{
    }
 }
 
-const insertAgricultura = (unidade, variavel, dados) =>{
+const insertAgricultura = (dados) =>{
    const div_agricultura = document.querySelector('#agricultura')
 
    if(div_agricultura.children.length>0) removeChilds(div_agricultura)
@@ -150,7 +150,7 @@ const searchCEP = async ()=>{
          let dados = data[0].resultados
          console.log(dados)
 
-         insertAgricultura(unidade, variavel, dados)
+         insertAgricultura(dados)
 
       })
 
