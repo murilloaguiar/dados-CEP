@@ -15,7 +15,7 @@ const insertDataCEP = data =>{
    for (const key in data) {
       if (cep_data.indexOf(key) != -1) {
          const div_card_principal = document.createElement('div')
-         div_card_principal.className = "col-sm-12 col-md-6"
+         div_card_principal.className = "col-12 col-md-6"
 
          const div_card = document.createElement('div')
          div_card.className = "card text-warning bg-dark mb-3"
@@ -52,7 +52,7 @@ const insertPIB = data =>{
    for (const key in data) {
    
       const div_card_principal = document.createElement('div')
-      div_card_principal.className = "col-sm-12 col-md-6"
+      div_card_principal.className = "col-12 col-md-6"
 
       const div_card = document.createElement('div')
       div_card.className = "card text-warning bg-dark mb-3"
@@ -90,7 +90,7 @@ const insertAgricultura = (dados) =>{
       let categoria = dados[key].classificacoes[0].categoria
 
       const div_card_principal = document.createElement('div')
-      div_card_principal.className = "col-sm-12 col-md-6"
+      div_card_principal.className = "col-12 col-md-6"
 
       const div_card = document.createElement('div')
       div_card.className = "card text-warning bg-dark mb-3"
