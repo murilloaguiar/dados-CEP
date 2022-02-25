@@ -68,7 +68,7 @@ const insertPIB = data =>{
 
       const p_card_body = document.createElement('p')
       p_card_body.className = "card-text"
-      p_card_body.innerHTML = data[key]!= '' ? 'R$ '+data[key]*1000 : 'Indisponível'
+      p_card_body.innerHTML = data[key]!= '' ? 'R$ '+data[key]+' mil' : 'Indisponível'
 
       div_card_body.appendChild(p_card_body)
 
@@ -81,10 +81,51 @@ const insertPIB = data =>{
 }
 
 const insertAgricultura = (unidade, variavel, dados) =>{
-    
-    for (const key in dados) {
+   const div_agricultura = document.querySelector('#agricultura')
 
-        let categoria = dados[key].classificacoes[0].categoria
+   if(div_agricultura.children.length>0) removeChilds(div_agricultura)
+
+   for (const key in dados) {
+
+      let categoria = dados[key].classificacoes[0].categoria
+
+      const div_card_principal = document.createElement('div')
+      div_card_principal.className = "col-sm-12 col-md-6"
+
+      const div_card = document.createElement('div')
+      div_card.className = "card text-warning bg-dark mb-3"
+
+      const div_card_header = document.createElement('div')
+      div_card_header.className = "card-header fw-bold"
+      div_card_header.innerHTML = `${Object.values(categoria)}`
+
+      div_card.appendChild(div_card_header)
+
+      
+
+      const div_card_body = document.createElement('div')
+      div_card_body.className = "card-body"
+
+
+      let anos = dados[key].series[0].serie
+
+      for (const key3 in anos) {
+
+         const p_card_body = document.createElement('p')
+         p_card_body.className = "card-text"
+         p_card_body.innerHTML = anos[key3] == '-' || anos[key3] == '...' ? `${key3}: 0 hectares` : `${key3}: ${anos[key3]} hectar(es)`
+
+         div_card_body.appendChild(p_card_body)
+   
+      
+      }
+
+      div_card.appendChild(div_card_body)
+      div_card_principal.appendChild(div_card)
+
+      div_agricultura.appendChild(div_card_principal)
+   
+        /*let categoria = dados[key].classificacoes[0].categoria
         for (const key2 in categoria) {
             let h5 = document.createElement('h5')
             h5.innerHTML = `${categoria[key2]}`
@@ -98,7 +139,7 @@ const insertAgricultura = (unidade, variavel, dados) =>{
             p.innerHTML = `${key3}: ${anos[key3]}`
             document.querySelector("#agricultura").appendChild(p)
             
-        }
+        }*/
     }
 }
 
@@ -107,7 +148,6 @@ const searchCEP = async ()=>{
 
 
    let cep = document.querySelector('#search').value
-   let date = new Date
    let ibge = ""
    let microrregiao = ""
    
@@ -130,7 +170,7 @@ const searchCEP = async ()=>{
       })
 
    /*dados agricolas*/    
-   await fetch(`https://servicodados.ibge.gov.br/api/v3/agregados/1613/periodos/-3/variaveis/2313|216|214|112|215?localidades=N9[${microrregiao}]&classificacao=82[2717,45981,2719,2720,40472,2722,2723,40473,2725,2728,2731,2732,2733,2734,2735,2736,2737,2738,2741,2742,2743,2745,2748]`)
+   await fetch(`https://servicodados.ibge.gov.br/api/v3/agregados/1613/periodos/-3/variaveis/2313?localidades=N6[${ibge}]&classificacao=82[2717,45981,2719,2720,2722,2723,40473,2725,2728,2731,2732,2733,2734,2735,2736,2737,2738,90001,2741,2742,2745,2748]`)
       .then(response => response.json())
       .then(data => {
 
@@ -140,7 +180,7 @@ const searchCEP = async ()=>{
          
 
          let dados = data[0].resultados
-         
+         console.log(dados)
 
          insertAgricultura(unidade, variavel, dados)
 
