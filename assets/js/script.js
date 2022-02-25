@@ -129,7 +129,8 @@ const insertAgricultura = (dados) =>{
 }
 
 const searchCEP = async ()=>{
-   document.querySelector('#main').classList.remove('d-none')
+   const main = document.querySelector('#main')
+   const alert = document.querySelector('#alert')
 
    let cep = document.querySelector('#search').value
    let ibge = ""
@@ -138,8 +139,18 @@ const searchCEP = async ()=>{
    await fetch(`https://viacep.com.br/ws/${cep}/json/unicode/`)
       .then(response =>response.json())
       .then(data=>{
-         insertDataCEP(data)
-         ibge = data.ibge
+
+         if(data.erro){
+            if(!main.classList.contains('d-none')) main.classList.add('d-none')
+            alert.classList.remove('d-none')
+         } 
+         else {
+            if(!alert.classList.contains('d-none')) alert.classList.add('d-none')
+
+            main.classList.remove('d-none')
+            insertDataCEP(data)
+            ibge = data.ibge
+         }
       })
    
    /*dados agricolas*/    
