@@ -20,7 +20,8 @@
       <div class="container">
          
          <div class="row">
-            <div class="col-9">
+            
+            <div class="col-10">
                <div class="form-floating">
                   <input class="form-control me-2" type="search" placeholder="CEP" id="search" aria-label="Search">
                   <label for="search">Digite um CEP para obter informações</label>
@@ -28,36 +29,33 @@
                
             </div>
 
-            <div class="col-3">
+            <div class="col-2">
                <button class="btn btn-outline-warning btn-lg" id="submit">Obter</button>
             </div>
-            
+
          </div>
       </div>   
    
 
    </header>
 
-   <main class="container mt-4" id="main">
-      <section>
+   <main class="pt-4 bg-linear-gradient d-none" id="main">
+      <section class="container">
+
+         <h1>Informações do CEP pesquisado</h1>
          <div class="row" id="cep-data">
-
-            
-               
+                   
          </div>
-
-         
 
          <div class="row">
             <div class="col-12">
-               <h3>População estimada da cidade</h3> <p id="population"></p>
+               <h1>População estimada da cidade</h1> <p id="population" class="fw-bold"></p>
             </div>
          </div>
 
-         <div class="row">
-               <div class="col-12" id="pib">
-                  <h3>Produto interno bruto municipal (mil reais)</h3>
-               </div>
+         <h1>Produto interno bruto municipal</h1>
+         <div class="row" id="pib">
+ 
          </div>
 
          <div class="row">
@@ -66,8 +64,6 @@
                   <h5>Área destinada à colheita (hectares)</h5>
                </div>
          </div>
-
-         
 
       </section>
    </main>

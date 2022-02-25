@@ -43,23 +43,41 @@ const insertDataCEP = data =>{
 
    }
 
-   console.log(principal.children.length)
-
-      
-   // document.querySelector('#street').innerHTML = data.logradouro
-   // document.querySelector('#city').innerHTML = data.localidade
-   // document.querySelector('#district').innerHTML = data.bairro
-   // document.querySelector('#state').innerHTML = data.uf
-   // document.querySelector('#ddd').innerHTML = data.ddd
 }
 
 const insertPIB = data =>{
-    for (const key in data) {
-        let p = document.createElement('p')
-        p.innerHTML = `${key}: ${data[key]}`
-        document.querySelector("#pib").appendChild(p)
+   const div_pib = document.querySelector('#pib')
+   if(div_pib.children.length>0) removeChilds(div_pib)
 
-    }
+   for (const key in data) {
+   
+      const div_card_principal = document.createElement('div')
+      div_card_principal.className = "col-sm-12 col-md-6"
+
+      const div_card = document.createElement('div')
+      div_card.className = "card text-warning bg-dark mb-3"
+
+      const div_card_header = document.createElement('div')
+      div_card_header.className = "card-header fw-bold"
+      div_card_header.innerHTML = key.toUpperCase() 
+
+      div_card.appendChild(div_card_header)
+
+      const div_card_body = document.createElement('div')
+      div_card_body.className = "card-body"
+
+      const p_card_body = document.createElement('p')
+      p_card_body.className = "card-text"
+      p_card_body.innerHTML = data[key]!= '' ? 'R$ '+data[key]*1000 : 'Indisponível'
+
+      div_card_body.appendChild(p_card_body)
+
+      div_card.appendChild(div_card_body)
+      div_card_principal.appendChild(div_card)
+
+      div_pib.appendChild(div_card_principal)
+
+   }
 }
 
 const insertAgricultura = (unidade, variavel, dados) =>{
@@ -92,14 +110,12 @@ const searchCEP = async ()=>{
    let date = new Date
    let ibge = ""
    let microrregiao = ""
-   let data = ""
    
 
    /*dados do cep*/ 
    await fetch(`https://viacep.com.br/ws/${cep}/json/unicode/`)
       .then(response =>response.json())
       .then(data=>{
-         this.data = data
          insertDataCEP(data)
          ibge = data.ibge
       })
@@ -146,10 +162,11 @@ const searchCEP = async ()=>{
       })    
    
    /*população total*/ 
-   await fetch(`https://servicodados.ibge.gov.br/api/v3/agregados/6579/periodos/${date.getFullYear()}/variaveis/9324?localidades=N6[${ibge}]`)
+   await fetch(`https://servicodados.ibge.gov.br/api/v3/agregados/6579/periodos/-1/variaveis/9324?localidades=N6[${ibge}]`)
       .then(response => response.json())
       .then(data => {
-            document.querySelector('#population').innerHTML = `${data[0].resultados[0].series[0].serie[date.getFullYear()]} pessoas`
+            data = data[0].resultados[0].series[0].serie
+            document.querySelector('#population').innerHTML = `${Object.getOwnPropertyNames(data)}: ${Object.values(data)} pessoas`
       })
 
 }
