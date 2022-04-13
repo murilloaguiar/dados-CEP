@@ -136,7 +136,7 @@ const searchCEP = async ()=>{
    let ibge = ""
 
    /*dados do cep*/ 
-   await fetch(`https://viacep.com.br/ws/${cep}/json/unicode/`)
+   await fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then(response =>response.json())
       .then(data=>{
 
